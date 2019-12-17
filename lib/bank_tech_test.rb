@@ -17,7 +17,7 @@ class Account
   end
 
   def statement
-    "#{@transactions[0]}\n#{@transactions[1]}"
+    "date || credit || debit || balance\n#{@transactions[0]}\n#{@transactions[1]}"
   end
 
   private

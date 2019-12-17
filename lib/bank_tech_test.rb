@@ -5,14 +5,14 @@ class Account
     @balance = 0
   end
 
-  def deposit(deposit)
-    amend_balance(deposit)
-    receipt(deposit, @balance)
+  def credit(credit)
+    amend_balance(credit)
+    receipt(credit, @balance)
   end
 
-  def withdraw(withdrawal)
-    amend_balance(-withdrawal)
-    receipt(-withdrawal, @balance)
+  def debit(debit)
+    amend_balance(-debit)
+    receipt(-debit, @balance)
   end
 
   private

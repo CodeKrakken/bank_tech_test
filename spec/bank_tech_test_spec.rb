@@ -43,10 +43,10 @@ describe 'account' do
     expect(@account.debit(10)).to eq("#{todays_date} || || 10.00 || -10.00")
   end
 
-  it 'returns a statement of historical transactions' do
+  it 'returns a statement of historical transactions, newest first' do
     @account.credit(1000)
     @account.credit(2000)
-    expect(@account.statement).to eq("date || credit || debit || balance\n#{todays_date} || 1000.00 || || 1000.00\n#{todays_date} || 2000.00 || || 3000.00")
+    expect(@account.statement).to eq("date || credit || debit || balance\n#{todays_date} || 2000.00 || || 3000.00\n#{todays_date} || 1000.00 || || 1000.00")
   end
 
 end

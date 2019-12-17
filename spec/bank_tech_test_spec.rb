@@ -7,13 +7,15 @@ describe 'account' do
   end
 
   it 'allows the account holder to deposit 10' do
-    # account = Account.new
     expect(@account.deposit(10)).to eq(10)
   end
 
   it 'keeps a running total of deposits' do
-    # account = Account.new
     @account.deposit(10)
     expect(@account.deposit(10)).to eq(20)
+  end
+
+  it 'allows the account holder to withdraw 10' do
+    expect(@account.withdraw(10)).to eq(-10)
   end
 end

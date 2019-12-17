@@ -9,4 +9,8 @@ class Account
     @balance += deposit
   end
 
+  def withdraw(withdrawal)
+    @balance -= withdrawal
+  end
+
 end

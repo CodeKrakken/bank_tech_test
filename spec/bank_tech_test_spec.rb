@@ -49,4 +49,10 @@ describe 'account' do
     expect(@account.statement).to eq("date || credit || debit || balance\n#{todays_date} || 2000.00 || || 3000.00\n#{todays_date} || 1000.00 || || 1000.00")
   end
 
+  it 'returns a full statement of variable length' do
+    @account.credit(1000)
+    @account.credit(2000)
+    @account.debit(500)
+    expect(@account.statement).to eq("date || credit || debit || balance\n#{todays_date} || || 500.00 || 2500.00\n#{todays_date} || 2000.00 || || 3000.00\n#{todays_date} || 1000.00 || || 1000.00")
+  end
 end

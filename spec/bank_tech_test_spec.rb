@@ -42,4 +42,10 @@ describe 'account' do
   it 'returns a receipt with debit column' do
     expect(@account.debit(10)).to eq("#{todays_date} || || 10 || -10")
   end
+
+  it 'returns a statement of historical transactions' do
+    @account.credit(1000)
+    @account.credit(2000)
+    expect(@account.statement).to eq("#{todays_date} || 1000 || || 1000\n#{todays_date} || 2000 || || 3000")
+  end
 end

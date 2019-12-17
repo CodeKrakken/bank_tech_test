@@ -3,28 +3,38 @@ class Account
   
   def initialize
     @balance = 0
+    @transactions = []
   end
 
   def credit(credit)
     amend_balance(credit)
-    receipt(credit, @balance)
+    store(credit, @balance)
   end
 
   def debit(debit)
     amend_balance(-debit)
-    receipt(-debit, @balance)
+    store(-debit, @balance)
+  end
+
+  def statement
+    "#{@transactions[0]}\n#{@transactions[1]}"
   end
 
   private
 
-  def amend_balance(transaction)
-    @balance += transaction
+  def amend_balance(funds)
+    @balance += funds
   end
 
-  def receipt(transaction, balance)
+  def store(transaction, balance)
     transaction > 0 ? 
-    Time.now.strftime("%d/%m/%Y") + " || " + transaction.to_s + " || || " + balance.to_s :
-    Time.now.strftime("%d/%m/%Y") + " || || " + (transaction - transaction - transaction).to_s + " || " + balance.to_s
+    @transactions << Time.now.strftime("%d/%m/%Y") + " || " + transaction.to_s + " || || " + balance.to_s :
+    @transactions << Time.now.strftime("%d/%m/%Y") + " || || " + (transaction - transaction - transaction).to_s + " || " + balance.to_s
+    receipt
+  end
+
+  def receipt
+    @transactions.last
   end
 
 end

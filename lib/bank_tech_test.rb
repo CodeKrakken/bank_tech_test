@@ -7,18 +7,18 @@ class Account
 
   def deposit(deposit)
     @balance += deposit
-    receipt(@balance)
+    receipt(deposit, @balance)
   end
 
   def withdraw(withdrawal)
     @balance -= withdrawal
-    receipt(@balance)
+    receipt(withdrawal, @balance)
   end
 
   private
 
-  def receipt(balance)
-    Time.now.strftime("%d/%m/%Y") + " || " + balance.to_s
+  def receipt(transaction, balance)
+    Time.now.strftime("%d/%m/%Y") + " || " + transaction.to_s + " || " + balance.to_s
   end
 
 end

@@ -18,4 +18,11 @@ describe 'account' do
   it 'allows the account holder to withdraw 10' do
     expect(@account.withdraw(10)).to eq(-10)
   end
+
+  it 'keeps track of a combination of withdrawals and deposits' do
+    @account.deposit(10)
+    @account.deposit(10)
+    @account.withdraw(5)
+    expect(@account.withdraw(35)).to eq(-20)
+  end
 end

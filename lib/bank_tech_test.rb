@@ -6,16 +6,20 @@ class Account
   end
 
   def deposit(deposit)
-    @balance += deposit
+    amend_balance(deposit)
     receipt(deposit, @balance)
   end
 
   def withdraw(withdrawal)
-    @balance -= withdrawal
+    amend_balance(-withdrawal)
     receipt(withdrawal, @balance)
   end
 
   private
+
+  def amend_balance(transaction)
+    @balance += transaction
+  end
 
   def receipt(transaction, balance)
     Time.now.strftime("%d/%m/%Y") + " || " + transaction.to_s + " || " + balance.to_s

@@ -28,8 +28,8 @@ class Account
 
   def store(transaction, balance)
     transaction > 0 ? 
-    @transactions << Time.now.strftime("%d/%m/%Y") + " || " + transaction.to_s + " || || " + balance.to_s :
-    @transactions << Time.now.strftime("%d/%m/%Y") + " || || " + (transaction - transaction - transaction).to_s + " || " + balance.to_s
+    @transactions << Time.now.strftime("%d/%m/%Y") + " || " + sprintf("%.2f", transaction).to_s + " || || " + sprintf("%.2f", balance).to_s :
+    @transactions << Time.now.strftime("%d/%m/%Y") + " || || " + sprintf("%.2f", (transaction - transaction - transaction)).to_s + " || " + sprintf("%.2f", balance).to_s
     receipt
   end
 
